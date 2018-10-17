@@ -1,35 +1,37 @@
 import {
-  POST_AD,
-  POST_AD_SUCCESS,
-  POST_AD_FAILURE,
-} from '../actions/actionTypes/postAdActionTypes'
+  GET_ADS,
+  GET_ADS_SUCCESS,
+  GET_ADS_FAILURE,
+} from '../actions/actionTypes/getAdsActionTypes'
 import { _initialState } from './reducerUtils/utils'
 
 const initialState = {
   ..._initialState,
 }
 
-const postAddReducer = (state = initialState, action) => {
+const getAdsReducer = (state = initialState, action) => {
   const {
     type,
     status,
+    data,
     errorMsg
   } = action
 
   switch (type) {
-    case POST_AD:
+    case GET_ADS:
       return {
         ...state,
         isFetching: true,
       }
-    case POST_AD_SUCCESS:
+    case GET_ADS_SUCCESS:
       return {
         ...state,
         isFetching: false,
         fetched: true,
         status,
+        data,
       }
-    case POST_AD_FAILURE:
+    case GET_ADS_FAILURE:
       return {
         ...state,
         isFetching: false,
@@ -43,4 +45,4 @@ const postAddReducer = (state = initialState, action) => {
   }
 }
 
-export default postAddReducer
+export default getAdsReducer

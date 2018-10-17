@@ -3,4 +3,6 @@ export const _initialState = {
    fetched: false,
    error: false,
    errorMsg: '',
+   status: null,
+   data: [],
 }

@@ -5,15 +5,17 @@ export function posting(type, body) {
   }
 }
 
-export function postSuccess(type) {
+export function postSuccess(type, status) {
   return {
-    type
+    type,
+    status,
   }
 }
 
-export function postFailure(type, errorMsg) {
+export function postFailure(type, status, errorMsg) {
   return {
     type,
+    status,
     errorMsg,
   }
 }

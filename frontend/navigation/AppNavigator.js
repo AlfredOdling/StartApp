@@ -7,6 +7,7 @@ import HomeScreen from '../screens/HomeScreen'
 import PostAdScreen from '../screens/PostAdScreen'
 import ProfileScreen from '../screens/ProfileScreen'
 import AuthLoadingScreen from '../screens/AuthLoadingScreen'
+import AuthScreen from '../screens/AuthScreen'
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -66,8 +67,8 @@ const MainTabNavigator = createBottomTabNavigator({
 // For authentication
 export default createSwitchNavigator({
   AuthLoading: AuthLoadingScreen,
+  Auth: AuthScreen,
   Main: MainTabNavigator,
-  // Auth: AuthStack,
 },
 {
   initialRouteName: 'AuthLoading',

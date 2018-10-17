@@ -1,7 +1,7 @@
 import { Navigationactions } from "react-navigation"
 
 import AppNavigator from "../../navigation/AppNavigator"
-import { GET_LOGIN_DATA } from "../actions/actionTypes/loginActionTypes"
+import { GET_LOGIN_DATA } from "../actions/actionTypes/userActionTypes"
 
 // //Force a Init of the main router
 // let stateForLoggedIn = AppNavigator.router.getStateForAction( Navigationactions.init() )

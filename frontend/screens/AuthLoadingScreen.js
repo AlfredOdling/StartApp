@@ -14,13 +14,13 @@ export default class AuthLoadingScreen extends React.Component {
   checkAuth = () => {
     const { navigation } = this.props
     const { navigate } = navigation
-    let isLoggedIn = true
+    let isLoggedIn = false
 
     navigate(isLoggedIn? 'Main' : 'Auth')
   }
 
   render() {
-    return <Text>Loading</Text>
+    return <Text>Loa..ding</Text>
   }
 }
 

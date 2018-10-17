@@ -1,4 +1,6 @@
-/*
+  const ngrokLocalhost = 'https://4bc201b1.ngrok.io'
+
+  /*
    EXAMPLE USE:
 
   callGetOrders = async () => {
@@ -9,14 +11,13 @@
 */
 
 export async function callGet(route) {
-  const response = await fetch(route)
+  const response = await fetch(ngrokLocalhost + route)
   const { statusText, status } = response
 
-  if (status !== 200) {
-    console.error(statusText)
-    return []
-  } else {
-    return await response.json()
+  return {
+    errorMsg: statusText,
+    status,
+    data: await response.json(),
   }
 }
 
@@ -42,11 +43,6 @@ export async function callGet(route) {
 */
 
 export async function callPost(route, body) {
-  console.log('====================================');
-  console.log('route, body', route, body);
-  console.log('====================================');
-
-  const ngrokLocalhost = 'http://60476f93.ngrok.io'
   const response = await fetch(ngrokLocalhost + route, {
     method: 'POST',
     headers: {
@@ -56,11 +52,10 @@ export async function callPost(route, body) {
     body: JSON.stringify(body)
   })
   const { statusText, status } = response
-  console.log('====================================');
-  console.log('response', response);
-  console.log('====================================');
 
-  if (status !== 200) { console.error(statusText) }
-
-  return status
+  return {
+    errorMsg: statusText,
+    status,
+    data: await response.json(),
+  }
 }

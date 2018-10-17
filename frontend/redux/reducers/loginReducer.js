@@ -2,7 +2,7 @@ import {
   GET_LOGIN_DATA,
   GET_LOGIN_DATA_SUCCESS,
   GET_LOGIN_DATA_FAILURE,
-} from '../actions/actionTypes/loginActionTypes'
+} from '../actions/actionTypes/userActionTypes'
 
 import { fetchingData } from './reducerUtils/utils'
 
