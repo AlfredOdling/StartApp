@@ -24,13 +24,13 @@ const rootReducer = combineReducers({
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 // const logger = createLogger({
-//   level: 'error',//'warn' | 
+//   level: 'error',//'warn' |
 // });
 
 function configureStore() {
   let store = createStore(
     rootReducer,
-    composeEnhancers(applyMiddleware(thunk, logger)),
+    composeEnhancers(applyMiddleware(thunk)) //logger
   )
   let persistor = persistStore(store)
 

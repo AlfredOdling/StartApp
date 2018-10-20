@@ -7,15 +7,11 @@ import { posting, postSuccess, postFailure } from './utils/postActions'
 import { callPost } from '../../utils/utils'
 
 export function postAd(body) {
-  return async (dispatch) => {
+  return async dispatch => {
     dispatch(posting(POST_AD, body))
 
     const response = await callPost('/upload_ad', body)
-    const {
-      status,
-      errorMsg,
-      data
-    } = response
+    const { status, errorMsg, data } = response
 
     if (status !== 200) {
       dispatch(postFailure(POST_AD_FAILURE, status, errorMsg))
@@ -25,8 +21,4 @@ export function postAd(body) {
   }
 }
 
-export {
-  POST_AD,
-  POST_AD_SUCCESS,
-  POST_AD_FAILURE,
-}
+export { POST_AD, POST_AD_SUCCESS, POST_AD_FAILURE }

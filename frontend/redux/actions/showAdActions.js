@@ -1,16 +1,15 @@
-import {
-  SHOW_AD,
-  HIDE_AD,
-} from './actionTypes/showAdActionTypes'
+import { SHOW_AD, HIDE_AD } from './actionTypes/showAdActionTypes'
 
-export function showAd(item) {
-  return async (dispatch) => {
+export function showAd(item, navigate) {
+  navigate('AdScreenRoute')
+
+  return async dispatch => {
     dispatch(_showAd(SHOW_AD, item))
   }
 }
 
 export function hideAd() {
-  return async (dispatch) => {
+  return async dispatch => {
     dispatch(_hideAd(HIDE_AD))
   }
 }
@@ -28,7 +27,4 @@ _hideAd = type => {
   }
 }
 
-export {
-  SHOW_AD,
-  HIDE_AD,
-}
+export { SHOW_AD, HIDE_AD }

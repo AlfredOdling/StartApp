@@ -1,6 +1,6 @@
-  const ngrokLocalhost = 'https://4bc201b1.ngrok.io'
+const ngrokLocalhost = 'https://7d67dc6c.ngrok.io'
 
-  /*
+/*
    EXAMPLE USE:
 
   callGetOrders = async () => {
@@ -47,9 +47,9 @@ export async function callPost(route, body) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Accept': 'application/json'
+      Accept: 'application/json',
     },
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
   })
   const { statusText, status } = response
 

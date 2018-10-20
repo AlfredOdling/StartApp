@@ -6,19 +6,6 @@ import { Text } from 'react-native'
 // import AuthLoadingScreen from '../screens/AuthLoadingScreen'
 
 export default class AuthLoadingScreen extends React.Component {
-
-  componentWillMount() {
-    this.checkAuth()
-  }
-
-  checkAuth = () => {
-    const { navigation } = this.props
-    const { navigate } = navigation
-    let isLoggedIn = false
-
-    navigate(isLoggedIn? 'Main' : 'Auth')
-  }
-
   render() {
     return <Text>Loa..ding</Text>
   }

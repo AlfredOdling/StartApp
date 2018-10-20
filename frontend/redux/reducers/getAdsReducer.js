@@ -10,12 +10,7 @@ const initialState = {
 }
 
 const getAdsReducer = (state = initialState, action) => {
-  const {
-    type,
-    status,
-    data,
-    errorMsg
-  } = action
+  const { type, status, data, errorMsg } = action
 
   switch (type) {
     case GET_ADS:
@@ -39,7 +34,7 @@ const getAdsReducer = (state = initialState, action) => {
         status,
         errorMsg,
       }
-      
+
     default:
       return state
   }

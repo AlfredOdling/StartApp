@@ -10,11 +10,7 @@ const initialState = {
 }
 
 const postAddReducer = (state = initialState, action) => {
-  const {
-    type,
-    status,
-    errorMsg
-  } = action
+  const { type, status, errorMsg } = action
 
   switch (type) {
     case POST_AD:
@@ -37,7 +33,7 @@ const postAddReducer = (state = initialState, action) => {
         status,
         errorMsg,
       }
-      
+
     default:
       return state
   }

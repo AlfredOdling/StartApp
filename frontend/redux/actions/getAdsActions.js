@@ -7,15 +7,11 @@ import { getting, getSuccess, getFailure } from './utils/getActions'
 import { callGet } from '../../utils/utils'
 
 export function getAds() {
-  return async (dispatch) => {
+  return async dispatch => {
     dispatch(getting(GET_ADS))
 
     const response = await callGet('/ads')
-    const {
-      status,
-      errorMsg,
-      data
-    } = response
+    const { status, errorMsg, data } = response
 
     if (status !== 200) {
       dispatch(getFailure(GET_ADS_FAILURE, status, errorMsg))
@@ -25,8 +21,4 @@ export function getAds() {
   }
 }
 
-export {
-  GET_ADS,
-  GET_ADS_SUCCESS,
-  GET_ADS_FAILURE,
-}
+export { GET_ADS, GET_ADS_SUCCESS, GET_ADS_FAILURE }

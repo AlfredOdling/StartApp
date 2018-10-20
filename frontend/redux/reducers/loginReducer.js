@@ -13,8 +13,8 @@ const initialState = {
 }
 
 const loginReducer = (state = initialState, action) => {
-  const { type, body, errorMsg } = action
-  
+  const { body, errorMsg } = action
+
   switch (action.type) {
     case GET_LOGIN_DATA:
       return {

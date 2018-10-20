@@ -1,12 +1,9 @@
 import { StyleSheet } from 'react-native'
-
-// let grey = 'rbg(242, 242, 242)'
+import { getDim } from '../utils/responsive'
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    // flexDirection: 'row',
-    // justifyContent: 'space-around',
-    alignItems: 'center',
+    padding: getDim(10)
   },
 })

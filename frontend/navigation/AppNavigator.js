@@ -1,16 +1,23 @@
 import React from 'react'
 import { Platform } from 'react-native'
-import { createStackNavigator, createBottomTabNavigator, createSwitchNavigator } from 'react-navigation'
+import {
+  createStackNavigator,
+  createBottomTabNavigator,
+  createSwitchNavigator,
+} from 'react-navigation'
 
 import TabBarIcon from '../components/TabBarIcon'
 import HomeScreen from '../screens/HomeScreen'
 import PostAdScreen from '../screens/PostAdScreen'
+import AdScreen from '../screens/AdScreen'
 import ProfileScreen from '../screens/ProfileScreen'
 import AuthLoadingScreen from '../screens/AuthLoadingScreen'
 import AuthScreen from '../screens/AuthScreen'
+import ImageUpload from '../components/ImageUpload'
 
 const HomeStack = createStackNavigator({
-  Home: HomeScreen,
+  HomeScreenRoute: HomeScreen,
+  AdScreenRoute: AdScreen,
 })
 
 HomeStack.navigationOptions = {
@@ -28,10 +35,19 @@ HomeStack.navigationOptions = {
 }
 
 const PostAdStack = createStackNavigator({
-  postAd: PostAdScreen,
-},
-{
-  headerMode: 'none',
+  // PostAdScreenRoute: PostAdScreen,
+  PostAdScreenRoute: {
+    screen: PostAdScreen,
+    navigationOptions: () => ({
+      title: `Ny annons`,
+    }),
+  },
+  ImageUploadRoute: {
+    screen: ImageUpload,
+    navigationOptions: () => ({
+      title: `Lägg till foto`,
+    }),
+  },
 })
 
 PostAdStack.navigationOptions = {
@@ -39,7 +55,11 @@ PostAdStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-link${focused ? '' : '-outline'}`
+          : 'md-link'
+      }
     />
   ),
 }
@@ -53,7 +73,11 @@ ProfileStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options'}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-options${focused ? '' : '-outline'}`
+          : 'md-options'
+      }
     />
   ),
 }
@@ -65,11 +89,13 @@ const MainTabNavigator = createBottomTabNavigator({
 })
 
 // For authentication
-export default createSwitchNavigator({
-  AuthLoading: AuthLoadingScreen,
-  Auth: AuthScreen,
-  Main: MainTabNavigator,
-},
-{
-  initialRouteName: 'AuthLoading',
-})
+export default createSwitchNavigator(
+  {
+    AuthLoadingScreenRoute: AuthLoadingScreen,
+    AuthScreenRoute: AuthScreen,
+    MainRoute: MainTabNavigator,
+  },
+  {
+    initialRouteName: 'MainRoute',
+  }
+)

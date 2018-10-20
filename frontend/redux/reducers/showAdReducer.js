@@ -1,30 +1,24 @@
-import {
-  SHOW_AD,
-  HIDE_AD,
-} from '../actions/actionTypes/showAdActionTypes'
+import { SHOW_AD, HIDE_AD } from '../actions/actionTypes/showAdActionTypes'
 
 const initialState = {
   showAd: false,
-  item: {}
+  item: {},
 }
 
 const showAdReducer = (state = initialState, action) => {
-  const {
-    type,
-    item,
-  } = action
+  const { type, item } = action
 
   switch (type) {
     case SHOW_AD:
       return {
         showAd: true,
-        item
+        item,
       }
     case HIDE_AD:
       return {
-        showAd: false
+        showAd: false,
       }
-      
+
     default:
       return state
   }

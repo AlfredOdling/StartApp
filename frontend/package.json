@@ -36,5 +36,8 @@
     "jest-expo": "30.0.0",
     "react-native-debugger-open": "^0.3.17"
   },
+  "eslintConfig": {
+    "extends": "universe/native"
+  },
   "proxy": "http://localhost:5000"
 }

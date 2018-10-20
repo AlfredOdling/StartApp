@@ -1,7 +1,7 @@
-import { Navigationactions } from "react-navigation"
+import { Navigationactions } from 'react-navigation'
 
-import AppNavigator from "../../navigation/AppNavigator"
-import { GET_LOGIN_DATA } from "../actions/actionTypes/userActionTypes"
+import AppNavigator from '../../navigation/AppNavigator'
+import { GET_LOGIN_DATA } from '../actions/actionTypes/userActionTypes'
 
 // //Force a Init of the main router
 // let stateForLoggedIn = AppNavigator.router.getStateForAction( Navigationactions.init() )
@@ -26,7 +26,7 @@ import { GET_LOGIN_DATA } from "../actions/actionTypes/userActionTypes"
 
 const navigationReducer = (state = {}, action) => {
   switch (action.type) {
-    case "@@redux/INIT":
+    case '@@redux/INIT':
       return {
         ...state,
         // stateForLoggedIn: AppNavigator.router.getStateForAction(

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Platform, StatusBar, StyleSheet, View, Text } from 'react-native'
 import { AppLoading, Asset, Font, Icon } from 'expo'
-import AppNavigator from './navigation/AppNavigator'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/es/integration/react'
+import AppNavigator from './navigation/AppNavigator'
 import configureStore from './redux/store'
 
 const { store, persistor } = configureStore()
@@ -12,9 +12,9 @@ export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
   }
-    // const { navigationState, dispatch } = this.props
-    // navigation={addNavigationHelpers({ dispatch, state })}
-    
+  // const { navigationState, dispatch } = this.props
+  // navigation={addNavigationHelpers({ dispatch, state })}
+
   render() {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
@@ -29,7 +29,9 @@ export default class App extends React.Component {
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
           <Provider store={store}>
-            <PersistGate loading={<Text>Loading...</Text>} persistor={persistor}>
+            <PersistGate
+              loading={<Text>Loading...</Text>}
+              persistor={persistor}>
               <AppNavigator />
             </PersistGate>
           </Provider>
