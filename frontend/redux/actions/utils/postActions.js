@@ -5,10 +5,11 @@ export function posting(type, body) {
   }
 }
 
-export function postSuccess(type, status) {
+export function postSuccess(type, status, data) {
   return {
     type,
     status,
+    data,
   }
 }
 

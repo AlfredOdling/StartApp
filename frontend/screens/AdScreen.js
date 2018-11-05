@@ -12,21 +12,27 @@ import { styledComponents } from '../styles/_styledComponents'
 
 const AdScreen = ({ item }) => {
   const { adContainer, scrollViewContainer } = styledComponents
-  let uri = 'https://placekitten.com/g/200/300'
-  const { ad_description, ad_id, ad_price, ad_title } = item
+  const {
+    ad_title,
+    ad_description,
+    ad_time,
+    ad_price,
+    ad_imageUri,
+    ad_id,
+  } = item
 
   return (
     <ScrollView style={scrollViewContainer}>
       <View style={adContainer}>
-        <StyledAdImage data={uri} />
+        <StyledAdImage data={ad_imageUri} />
         <StyledText style={styles.title} data={ad_title} />
         <Separator style={styles.separator} />
         <StyledText style={styles.description} data={ad_description} />
         <StyledText style={styles.price} data={ad_price + ' kr'} />
         <StyledText style={styles.distance} data={ad_id + ' km'} />
-        <StyledText style={styles.date} data={'Måndag, 5 Oktober 2018'} />
+        <StyledText style={styles.date} data={ad_time} />
         <StyledProfileButton
-          data={{ name: 'Alfred Ödling', memberSince: 'Juni 2016', uri }}
+          data={{ name: 'Alfred Ödling', memberSince: 'Juni 2016', ad_imageUri }}
         />
         <StyledButton style={styles.green} data={'Utför arbete'} />
       </View>

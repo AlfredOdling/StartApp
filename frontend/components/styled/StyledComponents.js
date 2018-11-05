@@ -4,11 +4,13 @@ import { getDim } from '../../utils/responsive'
 import { styledComponents } from '../../styles/_styledComponents'
 
 const {
+  black_white_45,
   black_black_20,
   black_white_20,
   black_separator,
   white_separator,
   medium_black_14,
+  medium_white_14,
   medium_black_12,
   light_black_12,
   ad_price,
@@ -17,7 +19,7 @@ const {
   white_distance,
   date,
   greenButton,
-  lightGreenButton,
+  orangeButton,
   whiteButton,
   whiteTextButton,
   blackTextButton,
@@ -31,10 +33,12 @@ const {
 // prettier-ignore
 export const StyledText = ({ style, data }) => {
   let _style =
-    style === 'black_black_20' ? black_black_20
+    style === 'black_white_45' ? black_white_45
+  : style === 'black_black_20' ? black_black_20
   : style === 'black_white_20' ? black_white_20
   : style === 'light_black_12' ? light_black_12
   : style === 'medium_black_14' ? medium_black_14
+  : style === 'medium_white_14' ? medium_white_14
   : style === 'medium_black_12' ? medium_black_12
   : style === 'date' ? date
   : style === 'ad_price' ? ad_price
@@ -60,8 +64,8 @@ export const Separator = ({ style }) => {
 export const StyledButton = ({ style, data, onPress }) => {
   let _style =
     style === 'green' ? greenButton
-  : style === 'lightGreen' ? lightGreenButton
   : style === 'white' ? whiteButton
+  : style === 'orange' ? orangeButton
   : ''
 
   let _buttonTextStyle =

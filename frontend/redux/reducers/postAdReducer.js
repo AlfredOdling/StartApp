@@ -10,13 +10,14 @@ const initialState = {
 }
 
 const postAddReducer = (state = initialState, action) => {
-  const { type, status, errorMsg } = action
+  const { type, status, errorMsg, body, data } = action
 
   switch (type) {
     case POST_AD:
       return {
         ...state,
         isFetching: true,
+        body,
       }
     case POST_AD_SUCCESS:
       return {
@@ -24,6 +25,7 @@ const postAddReducer = (state = initialState, action) => {
         isFetching: false,
         fetched: true,
         status,
+        data,
       }
     case POST_AD_FAILURE:
       return {

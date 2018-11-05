@@ -42,8 +42,9 @@ executeQuery = (res, query, queryArr) => {
   getConnection().query(query, queryArr, (err, rows, field) => {
     if (err) {
       console.log('ERROR: ', err)
-      res.statusMessage = err
-      res.status(500).end()
+      // res.statusMessage = err
+      res.status(500).send(err);
+      // res.status(500).end()
     } else {
       res.status(200).send(rows)
     }
@@ -64,14 +65,15 @@ app.post('/upload_ad', (req, res) => {
     ad_title,
     ad_description,
     ad_time,
-    ad_price
+    ad_price,
+    ad_imageUri,
   } = req.body
 
   const query = 
-    'INSERT INTO ads ( ad_title, ad_description, ad_time, ad_price)'+
-    ' VALUES (?, ?, ?, ?)'
+    'INSERT INTO ads ( ad_title, ad_description, ad_time, ad_price, ad_imageUri)'+
+    ' VALUES (?, ?, ?, ?, ?)'
 
-  const queryArr = [ad_title, ad_description, ad_time, ad_price]
+  const queryArr = [ad_title, ad_description, ad_time, ad_price, ad_imageUri]
 
   executeQuery(res, query, queryArr)
 })

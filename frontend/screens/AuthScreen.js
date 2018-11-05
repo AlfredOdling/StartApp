@@ -5,17 +5,18 @@ import { _login } from '../redux/actions/userActions'
 
 class AuthScreen extends React.Component {
   componentWillMount() {
-    const { navigation, isLoggedIn, _login } = this.props
+    const { navigation, isLoggedIn } = this.props
     const { navigate } = navigation
 
-    _login()
     navigate(isLoggedIn ? 'MainRoute' : 'AuthScreenRoute')
   }
 
   render() {
+    const { _login } = this.props
+
     return (
       <View>
-        <Text>AuthScreen</Text>
+        <Button onPress={this._login}>Logga in med FB</Button>
       </View>
     )
   }

@@ -30,7 +30,8 @@
     "redux-combine-actions": "^0.1.2",
     "redux-logger": "^3.0.6",
     "redux-persist": "^5.5.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "validator": "^10.8.0"
   },
   "devDependencies": {
     "jest-expo": "30.0.0",

@@ -14,6 +14,7 @@ import ProfileScreen from '../screens/ProfileScreen'
 import AuthLoadingScreen from '../screens/AuthLoadingScreen'
 import AuthScreen from '../screens/AuthScreen'
 import ImageUpload from '../components/ImageUpload'
+import CongratulationsScreen from '../screens/CongratulationsScreen'
 
 const HomeStack = createStackNavigator({
   HomeScreenRoute: HomeScreen,
@@ -48,6 +49,7 @@ const PostAdStack = createStackNavigator({
       title: `Lägg till foto`,
     }),
   },
+  CongratulationsScreenRoute: CongratulationsScreen,
 })
 
 PostAdStack.navigationOptions = {
@@ -96,6 +98,6 @@ export default createSwitchNavigator(
     MainRoute: MainTabNavigator,
   },
   {
-    initialRouteName: 'MainRoute',
+    initialRouteName: 'AuthLoadingScreenRoute',
   }
 )

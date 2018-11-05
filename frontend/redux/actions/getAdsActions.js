@@ -11,10 +11,10 @@ export function getAds() {
     dispatch(getting(GET_ADS))
 
     const response = await callGet('/ads')
-    const { status, errorMsg, data } = response
+    const { status, data } = response
 
     if (status !== 200) {
-      dispatch(getFailure(GET_ADS_FAILURE, status, errorMsg))
+      dispatch(getFailure(GET_ADS_FAILURE, status, data))
     } else {
       dispatch(getSuccess(GET_ADS_SUCCESS, status, data))
     }

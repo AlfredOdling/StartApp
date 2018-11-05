@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { FlatList, View, ActivityIndicator } from 'react-native'
-import GridView from 'react-native-super-grid'
+import { FlatList, View, ActivityIndicator, ScrollView } from 'react-native'
 import { getAds } from '../redux/actions/getAdsActions'
 import { showAd } from '../redux/actions/showAdActions'
 import ListItem from '../components/ListItem'
@@ -48,19 +47,21 @@ class HomeScreen extends React.Component {
     const { navigate } = navigation
 
     return (
-      <FlatList
-        contentContainerStyle={_FlatList.container}
-        data={ads}
-        keyExtractor={item => item.ad_id.toString()}
-        onRefresh={() => this.onRefresh()}
-        refreshing={isFetching}
-        renderItem={({ item }) => (
-          <ListItem showAd={showAd} item={item} navigate={navigate} />
-        )}
-        numColumns="2"
-        centerContent
-        ListFooterComponent={this.renderFooter}
-      />
+      <ScrollView>
+        <FlatList
+          contentContainerStyle={_FlatList.container}
+          data={ads}
+          keyExtractor={item => item.ad_id.toString()}
+          onRefresh={() => this.onRefresh()}
+          refreshing={isFetching}
+          renderItem={({ item }) => (
+            <ListItem showAd={showAd} item={item} navigate={navigate} />
+          )}
+          numColumns="2"
+          centerContent
+          ListFooterComponent={this.renderFooter}
+        />
+      </ScrollView>
     )
   }
 }

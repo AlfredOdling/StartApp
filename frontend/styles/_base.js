@@ -8,6 +8,8 @@ export const colors = {
   c_grey: 'rgb(180, 180, 180)',
   c_lightGrey: 'rgb(242, 242, 242)',
   c_green: 'rgb(127, 199, 54)',
+  c_green: 'rgb(127, 199, 54)',
+  c_orange: 'rgb(245, 166, 35)',
 }
 
 export const fonts = {

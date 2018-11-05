@@ -10,6 +10,7 @@ import navigationReducer from './reducers/navigationReducer'
 import postAdReducer from './reducers/postAdReducer'
 import getAdsReducer from './reducers/getAdsReducer'
 import showAdReducer from './reducers/showAdReducer'
+import postImageReducer from './reducers/postImageReducer'
 
 const configLogin = { key: 'loginReducer', storage }
 
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   getAdsReducer,
   postAdReducer,
   showAdReducer,
+  postImageReducer,
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

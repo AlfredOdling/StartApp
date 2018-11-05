@@ -1,4 +1,4 @@
-const ngrokLocalhost = 'https://7d67dc6c.ngrok.io'
+const ngrokLocalhost = 'https://2303e747.ngrok.io'
 
 /*
    EXAMPLE USE:
@@ -12,10 +12,9 @@ const ngrokLocalhost = 'https://7d67dc6c.ngrok.io'
 
 export async function callGet(route) {
   const response = await fetch(ngrokLocalhost + route)
-  const { statusText, status } = response
+  const { status } = response
 
   return {
-    errorMsg: statusText,
     status,
     data: await response.json(),
   }
@@ -51,10 +50,51 @@ export async function callPost(route, body) {
     },
     body: JSON.stringify(body),
   })
-  const { statusText, status } = response
+
+  const { status } = response
 
   return {
-    errorMsg: statusText,
+    status,
+    data: await response.json(),
+  }
+}
+
+export async function uploadImageAsync(uri) {
+  let apiUrl = 'https://file-upload-example-backend-dkhqoilqqn.now.sh/upload'
+
+  // Note:
+  // Uncomment this if you want to experiment with local server
+  //
+  // if (Constants.isDevice) {
+  //   apiUrl = `https://your-ngrok-subdomain.ngrok.io/upload`;
+  // } else {
+  //   apiUrl = `http://localhost:3000/upload`
+  // }
+
+  let uriParts = uri.split('.')
+  let fileType = uriParts[uriParts.length - 1]
+
+  let formData = new FormData()
+  formData.append('photo', {
+    uri,
+    name: `photo.${fileType}`,
+    type: `image/${fileType}`,
+  })
+
+  let options = {
+    method: 'POST',
+    body: formData,
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'multipart/form-data',
+    },
+  }
+
+  const response = await fetch(apiUrl, options)
+  const { statusMessage, status } = response
+
+  return {
+    errorMsg: statusMessage,
     status,
     data: await response.json(),
   }

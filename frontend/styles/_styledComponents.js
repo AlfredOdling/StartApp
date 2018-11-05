@@ -1,9 +1,7 @@
 import { colors, dimension, fonts } from './_base'
 
-const { c_black, c_white, c_green, c_grey, c_lightGrey, c_darkGrey } = colors
-
+const { c_black, c_white, c_green, c_grey, c_lightGrey, c_darkGrey, c_orange } = colors
 const { f_medium, f_black, f_heavy, f_light } = fonts
-
 const {
   _1,
   _3,
@@ -40,7 +38,6 @@ const buttonBase = {
   justifyContent: 'center',
   alignItems: 'center',
   marginTop: _20,
-  alignItems: 'center',
 }
 
 const button = {
@@ -70,17 +67,25 @@ const title = {
   fontSize: 20,
 }
 
-const greyBox = {
+const greyBoxNoPadding = {
   backgroundColor: c_lightGrey,
   marginTop: _20,
-  padding: _25,
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center',
   borderRadius: 5,
 }
 
+const greyBox = {
+  ...greyBoxNoPadding,
+  padding: _25,
+}
+
 export const styledComponents = {
+  black_white_45: {
+    fontFamily: f_black,
+    color: c_white,
+    fontSize: 45,
+  },
   black_black_20: {
     ...title,
     color: c_black,
@@ -104,6 +109,11 @@ export const styledComponents = {
     fontFamily: f_medium,
     fontSize: 14,
     color: c_black,
+  },
+  medium_white_14: {
+    fontFamily: f_medium,
+    fontSize: 14,
+    color: c_white,
   },
   medium_black_12: {
     fontFamily: f_medium,
@@ -134,13 +144,13 @@ export const styledComponents = {
     ...button,
     backgroundColor: c_green,
   },
-  lightGreenButton: {
+  orangeButton: {
     ...button,
-    backgroundColor: c_black,
+    backgroundColor: c_orange,
   },
   whiteButton: {
     ...button,
-    backgroundColor: c_black,
+    backgroundColor: c_white,
   },
   blackTextButton: {
     ...buttonText,
@@ -193,22 +203,39 @@ export const styledComponents = {
     flex: 1,
     backgroundColor: c_white,
     paddingHorizontal: _20,
+    paddingBottom: _60,
   },
   inputPhoto: {
     ...greyBox,
     height: _250,
+    alignItems: 'center',
+  },
+  inputPhotoUploaded: {
+    ...greyBoxNoPadding,
+    height: _250,
+    alignItems: 'center',
+    overflow: 'hidden',
   },
   inputTitleDescription: {
     ...greyBox,
+    alignItems: 'flex-start',
+  },
+  inputPrice: {
+    ...greyBox,
+    alignItems: 'flex-start',
   },
   inputDate: {
     ...greyBox,
+    alignItems: 'flex-start',
   },
   inputContainer: {
-    ...greyBox,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
     borderBottomWidth: 1,
     borderBottomColor: c_darkGrey,
-    height: _30,
+    height: _20,
     minWidth: _30,
   },
   input: {

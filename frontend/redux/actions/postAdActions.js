@@ -11,10 +11,10 @@ export function postAd(body) {
     dispatch(posting(POST_AD, body))
 
     const response = await callPost('/upload_ad', body)
-    const { status, errorMsg, data } = response
+    const { status, data } = response
 
     if (status !== 200) {
-      dispatch(postFailure(POST_AD_FAILURE, status, errorMsg))
+      dispatch(postFailure(POST_AD_FAILURE, status, data))
     } else {
       dispatch(postSuccess(POST_AD_SUCCESS, status, data))
     }

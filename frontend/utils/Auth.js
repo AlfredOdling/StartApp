@@ -12,6 +12,7 @@ export async function checkAuth() {
   })
 
   const { errorCode, type } = response
+  console.log('response', response)
 
   return {
     errorMsg: errorCode,
@@ -19,3 +20,10 @@ export async function checkAuth() {
     data: response,
   }
 }
+
+// // var lParams = access_token = ${ token };
+// // fetch(‘https://graph.facebook.com/User_id/permissions’,{
+// //   method : ‘DELETE’, body: lParams
+// // }
+// https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow#logout
+// https://stackoverflow.com/questions/51838676/how-to-logout-using-expo-facebook

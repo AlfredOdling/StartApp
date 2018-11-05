@@ -1,21 +1,33 @@
 import React from 'react'
-import { Text } from 'react-native'
-// import { connect } from 'react-redux'
-// import { addNavigationHelpers, NavigationActions } from 'react-navigation'
-// import MainTabNavigator from './MainTabNavigator'
-// import AuthLoadingScreen from '../screens/AuthLoadingScreen'
+import { Text, Button, View } from 'react-native'
+import { connect } from 'react-redux'
+import { _login } from '../redux/actions/userActions'
 
-export default class AuthLoadingScreen extends React.Component {
+class AuthLoadingScreen extends React.Component {
+  componentWillMount() {
+    const { navigation, isLoggedIn } = this.props
+    const { navigate } = navigation
+
+    navigate(isLoggedIn ? 'MainRoute' : 'AuthScreenRoute')
+  }
+
   render() {
-    return <Text>Loa..ding</Text>
+    return (
+      <View>
+        <Text>Vänta lite, kollar ifall du är inloggad...</Text>
+      </View>
+    )
   }
 }
 
-// const mapStateToProps = state => {
-//   return {
-//     isLoggedIn: state.loginReducer.isLoggedIn,
-//     navigationState: state.navigationReducer
-//   }
-// }
-
-// export default connect(mapStateToProps)(AppNavigation)
+const mapStateToProps = state => {
+  return {
+    isLoggedIn: state.loginReducer.isLoggedIn,
+  }
+}
+// const mapDispatchToProps = { }
+const _AuthLoadingScreen = connect(
+  mapStateToProps,
+  undefined
+)(AuthLoadingScreen)
+export default _AuthLoadingScreen
