@@ -8,6 +8,8 @@ import configureStore from './redux/store'
 
 const { store, persistor } = configureStore()
 
+export const getStore = () => store
+
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,

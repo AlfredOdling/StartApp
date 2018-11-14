@@ -1,16 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {
-  ActivityIndicator,
-  Button,
-  Clipboard,
-  Image,
-  Share,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native'
+import { Button, View } from 'react-native'
 import { ImagePicker, Permissions } from 'expo'
 import { postImage } from '../redux/actions/postImageActions'
 
@@ -85,4 +75,3 @@ const _ImageUpload = connect(
   mapDispatchToProps
 )(ImageUpload)
 export default _ImageUpload
-

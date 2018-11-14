@@ -81,7 +81,7 @@ export const StyledButton = ({ style, data, onPress }) => {
 }
 
 export const StyledProfileButton = ({ style, data }) => {
-  const { name, memberSince, uri } = data
+  const { name, memberSince, ad_imageUri } = data
 
   return (
     <TouchableHighlight style={buttonProfilePic}>
@@ -91,11 +91,14 @@ export const StyledProfileButton = ({ style, data }) => {
           justifyContent: 'flex-start',
           alignItems: 'center',
           flex: 1,
+          marginLeft: getDim(10),
         }}>
-        <Image style={smallRoundProfilePic} source={{ uri }} />
+        <Image style={smallRoundProfilePic} source={{ uri: ad_imageUri }} />
         <View style={{ justifyContent: 'flex-start', marginLeft: getDim(10) }}>
           <Text style={nameTextProfileButton}>{name}</Text>
-          <Text style={memberSinceTextProfileButton}>{memberSince}</Text>
+          <Text style={memberSinceTextProfileButton}>
+            Medlem sedan {memberSince}
+          </Text>
         </View>
       </View>
     </TouchableHighlight>
@@ -106,14 +109,21 @@ export const StyledAdImage = ({ data }) => (
   <Image style={adImage} source={{ uri: data }} />
 )
 
-export const StyledIcon = ({ source, width, height, marginVertical }) => {
+export const StyledIcon = ({
+  source,
+  width,
+  height,
+  marginVertical,
+  marginRight,
+}) => {
   return (
     <Image
       style={{
-        width,
-        height,
+        width: getDim(width),
+        height: getDim(height),
         resizeMode: 'contain',
-        marginVertical: marginVertical || 0,
+        marginVertical: getDim(marginVertical) || 0,
+        marginRight: getDim(marginRight) || 0,
       }}
       source={source}
     />

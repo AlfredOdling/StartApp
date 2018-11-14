@@ -1,7 +1,7 @@
-export function posting(type, body) {
+export function posting(type, data) {
   return {
     type,
-    body,
+    data,
   }
 }
 

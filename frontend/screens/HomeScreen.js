@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { FlatList, View, ActivityIndicator, ScrollView } from 'react-native'
 import { getAds } from '../redux/actions/getAdsActions'
 import { showAd } from '../redux/actions/showAdActions'
-import ListItem from '../components/ListItem'
+import { ListItem } from '../components/ListItem'
 import _FlatList from '../styles/_FlatList'
 
 class HomeScreen extends React.Component {
@@ -13,18 +13,27 @@ class HomeScreen extends React.Component {
     showAdReducer: undefined,
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { getAds } = this.props
     getAds()
   }
 
-  onRefresh() {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { ads } = nextProps
+    let returnStatement = []
+
+    if (ads !== prevState.ads) {
+      returnStatement = {
+        isFetching: false,
+      }
+    }
+    return returnStatement
+  }
+
+  onRefresh = () => {
     this.setState({ isFetching: true }, function() {
       const { getAds } = this.props
       getAds()
-      this.setState({
-        isFetching: false,
-      })
     })
   }
 
@@ -52,7 +61,7 @@ class HomeScreen extends React.Component {
           contentContainerStyle={_FlatList.container}
           data={ads}
           keyExtractor={item => item.ad_id.toString()}
-          onRefresh={() => this.onRefresh()}
+          onRefresh={this.onRefresh}
           refreshing={isFetching}
           renderItem={({ item }) => (
             <ListItem showAd={showAd} item={item} navigate={navigate} />

@@ -1,18 +1,14 @@
 import React from 'react'
 import { View, ImageBackground, TouchableHighlight } from 'react-native'
 import _ListItem from '../styles/_ListItem'
-import { Separator, StyledText } from '../components/styled/StyledComponents'
+import {
+  Separator,
+  StyledText,
+  StyledIcon,
+} from '../components/styled/StyledComponents'
 
-const ListItem = ({ showAd, item, navigate }) => {
-  const {
-    ad_title,
-    ad_description,
-    ad_time,
-    ad_price,
-    ad_imageUri,
-    ad_id,
-  } = item
-
+export const ListItem = ({ showAd, item, navigate }) => {
+  const { ad_title, ad_price, ad_imageUri, ad_id } = item
   const { innerContainer, containerContent, shadowContainer } = _ListItem
 
   return (
@@ -33,7 +29,15 @@ const ListItem = ({ showAd, item, navigate }) => {
             <StyledText style={styles.title} data={ad_title} />
             <Separator style={styles.separator} />
             <StyledText style={styles.price} data={ad_price + ' kr'} />
-            <StyledText style={styles.distance} data={ad_id + ' km'} />
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <StyledIcon
+                width={12}
+                height={16}
+                marginRight={5}
+                source={require('../assets/images/pin.png')}
+              />
+              <StyledText style={styles.distance} data={ad_id + ' km'} />
+            </View>
           </View>
         </ImageBackground>
       </View>
@@ -47,5 +51,3 @@ const styles = {
   price: 'ads_price',
   distance: 'white_distance',
 }
-
-export default ListItem

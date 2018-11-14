@@ -7,6 +7,7 @@ import {
   StyledButton,
   StyledAdImage,
   StyledProfileButton,
+  StyledIcon,
 } from '../components/styled/StyledComponents'
 import { styledComponents } from '../styles/_styledComponents'
 
@@ -29,10 +30,22 @@ const AdScreen = ({ item }) => {
         <Separator style={styles.separator} />
         <StyledText style={styles.description} data={ad_description} />
         <StyledText style={styles.price} data={ad_price + ' kr'} />
-        <StyledText style={styles.distance} data={ad_id + ' km'} />
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <StyledIcon
+            width={12}
+            height={16}
+            marginRight={5}
+            source={require('../assets/images/pin.png')}
+          />
+          <StyledText style={styles.distance} data={ad_id + ' km'} />
+        </View>
         <StyledText style={styles.date} data={ad_time} />
         <StyledProfileButton
-          data={{ name: 'Alfred Ödling', memberSince: 'Juni 2016', ad_imageUri }}
+          data={{
+            name: 'Alfred Ödling',
+            memberSince: 'Juni 2016',
+            ad_imageUri,
+          }}
         />
         <StyledButton style={styles.green} data={'Utför arbete'} />
       </View>
@@ -54,7 +67,6 @@ const mapStateToProps = state => ({
   item: state.showAdReducer.item,
 })
 // const mapDispatchToProps = { getAds, showAd }
-
 const _AdScreen = connect(
   mapStateToProps,
   undefined

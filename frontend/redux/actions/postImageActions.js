@@ -1,10 +1,10 @@
+import { NavigationActions } from 'react-navigation'
 import {
   POST_IMAGE,
   POST_IMAGE_SUCCESS,
   POST_IMAGE_FAILURE,
 } from './actionTypes/postImageActionTypes'
 import { posting, postSuccess, postFailure } from './utils/postActions'
-import { NavigationActions } from 'react-navigation'
 import { uploadImageAsync } from '../../utils/utils'
 
 export function postImage(pickerResult) {
@@ -16,7 +16,7 @@ export function postImage(pickerResult) {
       return
     }
 
-    response = await uploadImageAsync(pickerResult.uri)
+    const response = await uploadImageAsync(pickerResult.uri)
     const { status, errorMsg, data } = response
 
     if (status !== 200) {

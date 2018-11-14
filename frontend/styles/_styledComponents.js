@@ -1,6 +1,14 @@
 import { colors, dimension, fonts } from './_base'
 
-const { c_black, c_white, c_green, c_grey, c_lightGrey, c_darkGrey, c_orange } = colors
+const {
+  c_black,
+  c_white,
+  c_green,
+  c_grey,
+  c_lightGrey,
+  c_darkGrey,
+  c_orange,
+} = colors
 const { f_medium, f_black, f_heavy, f_light } = fonts
 const {
   _1,
@@ -173,10 +181,11 @@ export const styledComponents = {
     overflow: 'hidden',
     height: _42,
     width: _42,
-    borderRadius: 25,
+    borderRadius: 21,
   },
   buttonProfilePic: {
     ...buttonBase,
+    alignItems: 'flex-start',
     backgroundColor: c_white,
   },
   adContainer: {

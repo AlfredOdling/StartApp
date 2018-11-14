@@ -15,6 +15,7 @@ import AuthLoadingScreen from '../screens/AuthLoadingScreen'
 import AuthScreen from '../screens/AuthScreen'
 import ImageUpload from '../components/ImageUpload'
 import CongratulationsScreen from '../screens/CongratulationsScreen'
+import { InputPriceScreen } from '../screens/InputPriceScreen'
 
 const HomeStack = createStackNavigator({
   HomeScreenRoute: HomeScreen,
@@ -49,6 +50,7 @@ const PostAdStack = createStackNavigator({
       title: `Lägg till foto`,
     }),
   },
+  InputPriceScreenRoute: InputPriceScreen,
   CongratulationsScreenRoute: CongratulationsScreen,
 })
 

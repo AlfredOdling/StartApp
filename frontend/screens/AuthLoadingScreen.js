@@ -1,10 +1,10 @@
 import React from 'react'
-import { Text, Button, View } from 'react-native'
+import { Text, View } from 'react-native'
 import { connect } from 'react-redux'
 import { _login } from '../redux/actions/userActions'
 
 class AuthLoadingScreen extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     const { navigation, isLoggedIn } = this.props
     const { navigate } = navigation
 
@@ -22,7 +22,7 @@ class AuthLoadingScreen extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    isLoggedIn: state.loginReducer.isLoggedIn,
+    isLoggedIn: state.userReducer.isLoggedIn,
   }
 }
 // const mapDispatchToProps = { }

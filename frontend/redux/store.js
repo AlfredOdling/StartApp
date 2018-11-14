@@ -1,23 +1,27 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
-import { AppState } from 'react-native'
+// import { AppState } from 'react-native'
 import thunk from 'redux-thunk'
-import logger from 'redux-logger'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/es/storage'
-
-import loginReducer from './reducers/loginReducer'
+import userReducer from './reducers/userReducer'
+import usersReducer from './reducers/usersReducer'
 import navigationReducer from './reducers/navigationReducer'
 import postAdReducer from './reducers/postAdReducer'
 import getAdsReducer from './reducers/getAdsReducer'
+import getSpecificAdsReducer from './reducers/getSpecificAdsReducer'
+import getUserAdsReducer from './reducers/getUserAdsReducer'
 import showAdReducer from './reducers/showAdReducer'
 import postImageReducer from './reducers/postImageReducer'
 
-const configLogin = { key: 'loginReducer', storage }
+const configLogin = { key: 'userReducer', storage }
 
 const rootReducer = combineReducers({
-  loginReducer: persistReducer(configLogin, loginReducer),
+  userReducer: persistReducer(configLogin, userReducer),
+  usersReducer,
   navigationReducer,
   getAdsReducer,
+  getSpecificAdsReducer,
+  getUserAdsReducer,
   postAdReducer,
   showAdReducer,
   postImageReducer,
@@ -25,6 +29,7 @@ const rootReducer = combineReducers({
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
+// import logger from 'redux-logger'
 // const logger = createLogger({
 //   level: 'error',//'warn' |
 // });

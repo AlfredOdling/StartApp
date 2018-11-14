@@ -1,4 +1,7 @@
-const ngrokLocalhost = 'https://2303e747.ngrok.io'
+import { AuthSession, Facebook } from 'expo'
+import { getStore } from '../App'
+const ngrokLocalhost = 'https://3871bd2b.ngrok.io'
+const FB_APP_ID = '1850435378409537'
 
 /*
    EXAMPLE USE:
@@ -95,6 +98,65 @@ export async function uploadImageAsync(uri) {
 
   return {
     errorMsg: statusMessage,
+    status,
+    data: await response.json(),
+  }
+}
+
+export async function loginFB() {
+  let response = await Facebook.logInWithReadPermissionsAsync(FB_APP_ID, {
+    permissions: ['public_profile'],
+  })
+  const { type, token } = response
+
+  let returnStatement = {
+    status: type === 'success' ? 200 : 500,
+    data: { token },
+  }
+
+  if (type === 'success') {
+    returnStatement = getUserInfoFB(token, returnStatement.data)
+  }
+
+  return returnStatement
+}
+
+async function getUserInfoFB(token, data) {
+  // Get the user's name and ID using Facebook's Graph API
+  const response = await fetch(
+    `https://graph.facebook.com/me?access_token=${token}`
+  )
+
+  const { status } = response
+  const { id, name } = await response.json()
+
+  const result = {
+    user_id: id,
+    user_full_name: name,
+  }
+
+  // Append { token } with result
+  Object.assign(data, result)
+
+  return {
+    status,
+    data,
+  }
+}
+
+export async function logoutFB() {
+  const { token, id } = getStore().getState().userReducer.data
+
+  let response = await fetch(
+    'https://graph.facebook.com/' + id + '/permissions',
+    {
+      method: 'DELETE',
+      body: `access_token=${token}`,
+    }
+  )
+  const { status } = response
+
+  return {
     status,
     data: await response.json(),
   }
