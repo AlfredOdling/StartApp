@@ -104,9 +104,14 @@ export async function uploadImageAsync(uri) {
 }
 
 export async function loginFB() {
+  console.log('Facebook', Facebook)
+
   let response = await Facebook.logInWithReadPermissionsAsync(FB_APP_ID, {
     permissions: ['public_profile'],
+    behavior: 'native',
   })
+  console.log('response', response)
+
   const { type, token } = response
 
   let returnStatement = {

@@ -3,7 +3,7 @@ import {
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAILURE,
 } from '../../1_actionTypes/userActionTypes/loginActionTypes'
-import { loginFB } from '../../../utils/auth'
+import { loginFB } from '../../../utils/utils'
 import { posting, postSuccess, postFailure } from '../utils/postActions'
 
 export default function _login(type) {
