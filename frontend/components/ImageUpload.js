@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button, View } from 'react-native'
 import { ImagePicker, Permissions } from 'expo'
-import { postImage } from '../redux/actions/postImageActions'
+import postImage from '../redux/2_actions/postImageActions'
 
 class ImageUpload extends Component {
   componentDidUpdate(prevProps) {

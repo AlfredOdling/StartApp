@@ -2,7 +2,7 @@ import React from 'react'
 import { View, TextInput, Text, TouchableWithoutFeedback } from 'react-native'
 import { styledComponents } from '../styles/_styledComponents'
 
-export const InputPriceScreen = ({
+const InputPriceScreen = ({
   placeholder_price,
   handleChange,
   ad_price,
@@ -58,3 +58,5 @@ export const InputPriceScreen = ({
     </TouchableWithoutFeedback>
   )
 }
+
+export default InputPriceScreen

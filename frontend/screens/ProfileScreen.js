@@ -1,9 +1,9 @@
 import React from 'react'
 import { Text, Button, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
-import { _logout } from '../redux/actions/userActions'
-import { _getSpecificAds } from '../redux/actions/getSpecificAdsActions'
-import { EditAds } from '../components/EditAds'
+import _logout from '../redux/2_actions/userActions/logoutAction'
+import _getSpecificAds from '../redux/2_actions/adsActions/getSpecificAdsAction'
+import EditAds from '../components/EditAds'
 
 class ProfileScreen extends React.Component {
   componentDidMount() {
@@ -11,11 +11,23 @@ class ProfileScreen extends React.Component {
     _getSpecificAds(user_id)
   }
 
+  goToPayment = () => {
+    const { navigation } = this.props
+    const { navigate } = navigation
+    navigate('PaymentScreenRoute')
+  }
+
   render() {
     const { name, _logout, userAds } = this.props
 
     return (
       <ScrollView style={{ padding: 100 }}>
+        <Button
+          color="#841584"
+          onPress={this.goToPayment}
+          title={'Gå till betalning'}
+        />
+
         <Text>User Name: {name}</Text>
         <Button color="#841584" onPress={_logout} title={'Logga ut'} />
         <Text>Mina uppdrag</Text>
@@ -27,9 +39,9 @@ class ProfileScreen extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    name: state.userReducer.data.user_full_name,
-    user_id: state.userReducer.data.user_id,
-    userAds: state.getSpecificAdsReducer.data,
+    name: state.userReducers.loginReducer.data.user_full_name,
+    user_id: state.userReducers.loginReducer.data.user_id,
+    userAds: state.adsReducers.getSpecificAdsReducer.data,
   }
 }
 const mapDispatchToProps = { _logout, _getSpecificAds }

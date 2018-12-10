@@ -9,7 +9,10 @@ export async function loginFB() {
   response = await Facebook.logInWithReadPermissionsAsync(FB_APP_ID, {
     permissions: ['public_profile'],
   })
+  console.log('response', response)
+
   let { type, token } = response
+
   data = { token }
   let status = type === 'success' ? 200 : 500
 
@@ -36,10 +39,13 @@ export async function loginFB() {
 }
 
 export async function logoutFB() {
-  const { token, id } = getStore().getState().userReducer.data
+  const {
+    token,
+    user_id,
+  } = getStore().getState().userReducers.loginReducer.data
 
   let response = await fetch(
-    'https://graph.facebook.com/' + id + '/permissions',
+    'https://graph.facebook.com/' + user_id + '/permissions',
     {
       method: 'DELETE',
       body: `access_token=${token}`,

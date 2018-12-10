@@ -11,16 +11,24 @@ import {
 } from '../components/styled/StyledComponents'
 import { styledComponents } from '../styles/_styledComponents'
 
-const AdScreen = ({ item }) => {
+const AdScreen = ({ item, navigation }) => {
   const { adContainer, scrollViewContainer } = styledComponents
   const {
     ad_title,
     ad_description,
-    ad_time,
+    ad_date,
     ad_price,
     ad_imageUri,
     ad_id,
   } = item
+
+  const goToPickTime = () => {
+    const { navigate } = navigation
+
+    navigate('PickTimeScreenRoute', {
+      navigation,
+    })
+  }
 
   return (
     <ScrollView style={scrollViewContainer}>
@@ -39,7 +47,7 @@ const AdScreen = ({ item }) => {
           />
           <StyledText style={styles.distance} data={ad_id + ' km'} />
         </View>
-        <StyledText style={styles.date} data={ad_time} />
+        <StyledText style={styles.date} data={ad_date} />
         <StyledProfileButton
           data={{
             name: 'Alfred Ödling',
@@ -47,7 +55,11 @@ const AdScreen = ({ item }) => {
             ad_imageUri,
           }}
         />
-        <StyledButton style={styles.green} data={'Utför arbete'} />
+        <StyledButton
+          style={styles.green}
+          data={'Se möjliga tider'}
+          onPress={goToPickTime}
+        />
       </View>
     </ScrollView>
   )
@@ -64,9 +76,8 @@ const styles = {
 }
 
 const mapStateToProps = state => ({
-  item: state.showAdReducer.item,
+  item: state.adsReducers.showAdReducer.item,
 })
-// const mapDispatchToProps = { getAds, showAd }
 const _AdScreen = connect(
   mapStateToProps,
   undefined

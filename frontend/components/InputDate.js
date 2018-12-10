@@ -13,25 +13,25 @@ export default class InputDate extends React.Component {
 
   hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false })
 
-  handleDatePicked = ad_time => {
+  handleDatePicked = ad_date => {
     const { handleChange } = this.props
     // this.setState({
-    //   ad_time: this.formatDate(ad_time),
+    //   ad_date: this.formatDate(ad_date),
     // })
 
-    handleChange('ad_time', this.formatDate(ad_time))
+    handleChange('ad_date', this.formatDate(ad_date))
 
     this.hideDateTimePicker()
   }
 
-  formatDate = ad_time => {
+  formatDate = ad_date => {
     const options = {
       weekday: 'long',
       year: 'numeric',
       month: 'long',
       day: 'numeric',
     }
-    let dateToString = ad_time.toLocaleDateString('swe-SE', options)
+    let dateToString = ad_date.toLocaleDateString('swe-SE', options)
     let capitalizedFirstLetter =
       dateToString.charAt(0).toUpperCase() + dateToString.slice(1)
 
@@ -40,20 +40,20 @@ export default class InputDate extends React.Component {
 
   render() {
     const { inputDate } = styledComponents
-    const { ad_time } = this.props
+    const { ad_date } = this.props
     const { isDateTimePickerVisible } = this.state
 
     return (
       <View style={inputDate}>
         <TouchableOpacity onPress={() => this.showDateTimePicker()}>
-          <StyledText style={styles.when} data={ad_time} />
+          <StyledText style={styles.when} data={ad_date} />
         </TouchableOpacity>
 
         <DateTimePicker
           isVisible={isDateTimePickerVisible}
           onConfirm={date => this.handleDatePicked(date)}
           onCancel={() => this.hideDateTimePicker()}
-          mode={'datetime'}
+          mode={'date'}
         />
       </View>
     )

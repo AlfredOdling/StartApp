@@ -3,17 +3,16 @@ import { View, TouchableOpacity, Image } from 'react-native'
 import { StyledText, StyledIcon } from './styled/StyledComponents'
 import { styledComponents } from '../styles/_styledComponents'
 
-export const InputImage = ({ navigation, ad_imageUri }) => {
+const InputImage = ({ navigation, ad_imageUri }) => {
   const pickImage = () => {
     const { navigate } = navigation
     navigate('ImageUploadRoute')
   }
-
   const { inputPhoto, inputPhotoUploaded } = styledComponents
 
   return (
     <TouchableOpacity onPress={() => pickImage()}>
-      {ad_imageUri ? (
+      {ad_imageUri.length > 0 ? (
         <View style={inputPhotoUploaded}>
           <Image
             style={{ width: '100%', height: '100%' }}
@@ -48,3 +47,5 @@ const styles = {
   greenButton: 'green',
   orangeButton: 'orange',
 }
+
+export default InputImage

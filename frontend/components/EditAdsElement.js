@@ -7,7 +7,7 @@ export default class EditAdsElement extends React.Component {
     ad_id: '',
     ad_title: '',
     ad_description: '',
-    ad_time: '',
+    ad_date: '',
     ad_price: '',
     ad_imageUri: '',
   }
@@ -18,7 +18,7 @@ export default class EditAdsElement extends React.Component {
       ad_id,
       ad_title,
       ad_description,
-      ad_time,
+      ad_date,
       ad_price,
       ad_imageUri,
     } = ad
@@ -30,7 +30,7 @@ export default class EditAdsElement extends React.Component {
         ad_id,
         ad_title,
         ad_description,
-        ad_time,
+        ad_date,
         ad_price,
         ad_imageUri,
       }
@@ -62,7 +62,7 @@ export default class EditAdsElement extends React.Component {
       ad_id,
       ad_title,
       ad_description,
-      ad_time,
+      ad_date,
       ad_price,
       ad_imageUri,
     } = ad
@@ -71,7 +71,7 @@ export default class EditAdsElement extends React.Component {
       ad_id,
       ad_title: 'Ny titel! Hoppas jag',
       ad_description,
-      ad_time,
+      ad_date,
       ad_price,
       ad_imageUri,
     }
@@ -91,7 +91,7 @@ export default class EditAdsElement extends React.Component {
       ad_id,
       ad_title,
       ad_description,
-      ad_time,
+      ad_date,
       ad_price,
       ad_imageUri,
     } = ad
@@ -111,8 +111,8 @@ export default class EditAdsElement extends React.Component {
         />
         <Text>-----------</Text>
         {/*        <TextInput
-          onChangeText={text => this.handleChange('ad_time', text)}
-          value={ad_time}
+          onChangeText={text => this.handleChange('ad_date', text)}
+          value={ad_date}
         />
         <TextInput
           onChangeText={text => this.handleChange('ad_price', text)}

@@ -4,7 +4,7 @@ import { StyledText } from '../components/styled/StyledComponents'
 import { styledComponents } from '../styles/_styledComponents'
 import { getDim } from '../utils/responsive'
 
-export const InputTitleDescription = ({
+const InputTitleDescription = ({
   placeholder_title,
   ad_title,
   placeholder_description,
@@ -41,3 +41,5 @@ export const InputTitleDescription = ({
     </View>
   )
 }
+
+export default InputTitleDescription

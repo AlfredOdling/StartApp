@@ -1,8 +1,8 @@
 import React from 'react'
-import { Text, Button, View } from 'react-native'
+import { Button, View } from 'react-native'
 import { connect } from 'react-redux'
-import { _createUser } from '../redux/actions/usersActions'
-import { _login } from '../redux/actions/userActions'
+import _createUser from '../redux/2_actions/userActions/createUserAction'
+import _login from '../redux/2_actions/userActions/loginAction'
 
 class AuthScreen extends React.Component {
   state = {
@@ -66,7 +66,7 @@ class AuthScreen extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    isLoggedIn: state.userReducer.isLoggedIn,
+    isLoggedIn: state.userReducers.loginReducer.isLoggedIn,
   }
 }
 const mapDispatchToProps = { _createUser, _login }

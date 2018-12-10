@@ -15,11 +15,15 @@ import AuthLoadingScreen from '../screens/AuthLoadingScreen'
 import AuthScreen from '../screens/AuthScreen'
 import ImageUpload from '../components/ImageUpload'
 import CongratulationsScreen from '../screens/CongratulationsScreen'
-import { InputPriceScreen } from '../screens/InputPriceScreen'
+import InputPriceScreen from '../screens/InputPriceScreen'
+import InputTimeScreen from '../screens/InputTimeScreen'
+import PickTimeScreen from '../screens/PickTimeScreen'
+import PaymentScreen from '../screens/PaymentScreen'
 
 const HomeStack = createStackNavigator({
   HomeScreenRoute: HomeScreen,
   AdScreenRoute: AdScreen,
+  PickTimeScreenRoute: PickTimeScreen,
 })
 
 HomeStack.navigationOptions = {
@@ -52,6 +56,7 @@ const PostAdStack = createStackNavigator({
   },
   InputPriceScreenRoute: InputPriceScreen,
   CongratulationsScreenRoute: CongratulationsScreen,
+  InputTimeScreenRoute: InputTimeScreen,
 })
 
 PostAdStack.navigationOptions = {
@@ -70,6 +75,7 @@ PostAdStack.navigationOptions = {
 
 const ProfileStack = createStackNavigator({
   Profile: ProfileScreen,
+  PaymentScreenRoute: PaymentScreen,
 })
 
 ProfileStack.navigationOptions = {

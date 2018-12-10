@@ -1,29 +1,17 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 // import { AppState } from 'react-native'
 import thunk from 'redux-thunk'
-import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/es/storage'
-import userReducer from './reducers/userReducer'
-import usersReducer from './reducers/usersReducer'
-import navigationReducer from './reducers/navigationReducer'
-import postAdReducer from './reducers/postAdReducer'
-import getAdsReducer from './reducers/getAdsReducer'
-import getSpecificAdsReducer from './reducers/getSpecificAdsReducer'
-import getUserAdsReducer from './reducers/getUserAdsReducer'
-import showAdReducer from './reducers/showAdReducer'
-import postImageReducer from './reducers/postImageReducer'
-
-const configLogin = { key: 'userReducer', storage }
+import { persistStore /*persistReducer*/ } from 'redux-persist'
+// import storage from 'redux-persist/es/storage'
+import userReducers from './3_reducers/userReducers'
+import adsReducers from './3_reducers/adsReducers'
+import navigationReducer from './3_reducers/navigationReducer'
+import postImageReducer from './3_reducers/postImageReducer'
 
 const rootReducer = combineReducers({
-  userReducer: persistReducer(configLogin, userReducer),
-  usersReducer,
+  userReducers, // Persisting in reducer
   navigationReducer,
-  getAdsReducer,
-  getSpecificAdsReducer,
-  getUserAdsReducer,
-  postAdReducer,
-  showAdReducer,
+  adsReducers,
   postImageReducer,
 })
 

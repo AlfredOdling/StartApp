@@ -7,7 +7,7 @@ import {
   StyledIcon,
 } from '../components/styled/StyledComponents'
 
-export const ListItem = ({ showAd, item, navigate }) => {
+const ListItem = ({ showAd, item, navigate }) => {
   const { ad_title, ad_price, ad_imageUri, ad_id } = item
   const { innerContainer, containerContent, shadowContainer } = _ListItem
 
@@ -51,3 +51,5 @@ const styles = {
   price: 'ads_price',
   distance: 'white_distance',
 }
+
+export default ListItem

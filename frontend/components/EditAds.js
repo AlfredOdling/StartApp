@@ -2,7 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 import EditAdsElement from './EditAdsElement'
 
-export const EditAds = ({ callGetAds, ads }) => {
+const EditAds = ({ callGetAds, ads }) => {
   const renderAds = () => {
     let adsToRender = ads.map((ad, i) => {
       return <EditAdsElement key={i} ad={ad} callGetads={callGetAds} />
@@ -12,3 +12,5 @@ export const EditAds = ({ callGetAds, ads }) => {
 
   return <View>{renderAds()}</View>
 }
+
+export default EditAds

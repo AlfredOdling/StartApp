@@ -11,7 +11,7 @@ app.use(bodyParser.json()) // parse application/json
 app.use(morgan('dev'))
 
 //CORS Middleware
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   //Enabling CORS
   res.header('Access-Control-Allow-Origin', '*')
   res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT')
@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client/build')))
 
   // Handle React routing, return all requests to React app
-  app.get('*', function(req, res) {
+  app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
   })
 }
@@ -65,10 +65,10 @@ app.get('/ads/:user_id', (req, res) => {
   const { user_id } = req.params
 
   const query =
-    'SELECT * '+
-    'FROM ads '+
-    'WHERE '+
-      'user_id='+user_id
+    'SELECT * ' +
+    'FROM ads ' +
+    'WHERE ' +
+    'user_id=' + user_id
 
   executeQuery(res, query, null)
 })
@@ -76,13 +76,13 @@ app.get('/ads/:user_id', (req, res) => {
 // --------- POST ---------
 
 app.post('/post_ad', (req, res) => {
-  const { ad_title, ad_description, ad_time, ad_price, ad_imageUri, user_id } = req.body
+  const { ad_title, ad_description, ad_date, ad_time, ad_price, ad_imageUri, user_id, ad_schedule } = req.body
 
   const query =
-    'INSERT INTO ads ( ad_title, ad_description, ad_time, ad_price, ad_imageUri, user_id) ' +
-    'VALUES (?, ?, ?, ?, ?, ?)'
+    'INSERT INTO ads ( ad_title, ad_description, ad_date, ad_time, ad_price, ad_imageUri, user_id, ad_schedule) ' +
+    'VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
 
-  const queryArr = [ad_title, ad_description, ad_time, ad_price, ad_imageUri, user_id]
+  const queryArr = [ad_title, ad_description, ad_date, ad_time, ad_price, ad_imageUri, user_id, ad_schedule]
 
   executeQuery(res, query, queryArr)
 })
@@ -104,7 +104,7 @@ app.post('/post_user', (req, res) => {
 app.post('/delete_ad', (req, res) => {
   const { ad_id } = req.body
 
-  const query = 
+  const query =
     'DELETE FROM ads' +
     ' WHERE ad_id=' + ad_id
 
@@ -114,15 +114,29 @@ app.post('/delete_ad', (req, res) => {
 // --------- UPDATE ---------
 
 app.post('/update_ad', (req, res) => {
-  const { ad_id, ad_title, ad_description, ad_time, ad_price } = req.body
+  const { ad_id, ad_title, ad_description, ad_date, ad_time, ad_price } = req.body
 
   const query =
     'UPDATE ads' +
     ' SET' +
-      ' ad_title="' + ad_title + '"'
-      ' ad_description="' + ad_description + '"'
-      ' ad_time=' +'"'+ ad_time +'"'
-      ' ad_price=' + ad_price +
+    ' ad_title="' + ad_title + '"'
+  ' ad_description="' + ad_description + '"'
+  ' ad_schedule="' + ad_schedule + '"'
+  ' ad_date=' + '"' + ad_date + '"'
+  ' ad_time=' + '"' + ad_time + '"'
+  ' ad_price=' + ad_price +
+    ' WHERE ad_id=' + ad_id
+
+  executeQuery(res, query, null)
+})
+
+app.post('/update_ad_employees', (req, res) => {
+  const { ad_id, ad_employees } = req.body
+
+  const query =
+    'UPDATE ads' +
+    ' SET' +
+    ' ad_employees="' + ad_employees + '"'
     ' WHERE ad_id=' + ad_id
 
   executeQuery(res, query, null)

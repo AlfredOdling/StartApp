@@ -2,7 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 import { StyledButton } from '../components/styled/StyledComponents'
 
-export const UploadAdButton = ({ _postAd, isFetching, hasAllFields }) => {
+const UploadAdButton = ({ _postAd, isFetching, hasAllFields }) => {
   return (
     <View>
       {hasAllFields() ? (
@@ -28,3 +28,5 @@ const styles = {
   greenButton: 'green',
   orangeButton: 'orange',
 }
+
+export default UploadAdButton

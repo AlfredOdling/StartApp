@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { FlatList, View, ActivityIndicator, ScrollView } from 'react-native'
-import { getAds } from '../redux/actions/getAdsActions'
-import { showAd } from '../redux/actions/showAdActions'
-import { ListItem } from '../components/ListItem'
+import getAds from '../redux/2_actions/adsActions/getAdsAction'
+import { showAd } from '../redux/2_actions/adsActions/showAdActions'
+import ListItem from '../components/ListItem'
 import _FlatList from '../styles/_FlatList'
 
 class HomeScreen extends React.Component {
@@ -76,10 +76,9 @@ class HomeScreen extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  ads: state.getAdsReducer.data,
+  ads: state.adsReducers.getAdsReducer.data,
 })
 const mapDispatchToProps = { getAds, showAd }
-
 const _HomeScreen = connect(
   mapStateToProps,
   mapDispatchToProps

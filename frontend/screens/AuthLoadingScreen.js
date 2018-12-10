@@ -1,7 +1,6 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 import { connect } from 'react-redux'
-import { _login } from '../redux/actions/userActions'
 
 class AuthLoadingScreen extends React.Component {
   componentDidMount() {
@@ -22,10 +21,9 @@ class AuthLoadingScreen extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    isLoggedIn: state.userReducer.isLoggedIn,
+    isLoggedIn: state.userReducers.loginReducer.isLoggedIn,
   }
 }
-// const mapDispatchToProps = { }
 const _AuthLoadingScreen = connect(
   mapStateToProps,
   undefined
